@@ -1,0 +1,33 @@
+
+<div class="parent-form">
+    <div class="form-items">
+        <input type="text" id="search-example" placeholder="Nhập từ khóa và nhấn Enter">
+        <input type="submit" id="submit-button" value="Tìm kiếm">
+    </div>
+</div>
+
+<script>
+    require(["jquery", "mage/url"], function($, urlBuilder) {
+        $(document).ready(function () {
+            $('#submit-button').click(function() {
+                var url = urlBuilder.build('building/index/index');
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    dataType: 'json',
+                    data: {
+                        data1: 'test1',
+                        data2: 'test2',
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(xhr, status, errorThrown) {
+                        console.log('Error happens. Try again');
+                    }
+                })
+
+            })
+        })
+    })
+</script>

@@ -1,0 +1,28 @@
+<button id="modal-btn">Click me</button>
+<div id="modal-content">
+    <div class="modal-inner-content">
+        <h2>Modal Title</h2>
+        <p>Modal content…..</p>
+    </div>
+</div>
+<script type="text/javascript">
+    require(["jquery", "Magento_Ui/js/modal/modal"], function($, modal) {
+        var options = {
+            type: 'popup', // popup hoặc slide
+            responsive: true,
+            title: 'Bạn có chắc muốn xóa customer này?',
+            buttons: [{ // Thêm button nếu bạn cần (tùy chọn)
+                text: 'Đồng ý',
+                class: 'modal-close',
+                click: function() {
+                    this.closeModal(); // Đóng modal
+                }
+            }]
+        };
+
+        var popup = modal(options, $('#modal-content'));
+        $("#modal-btn").click(function() {
+            $('#modal-content').modal('openModal');
+        });
+    });
+</script>

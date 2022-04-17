@@ -1,0 +1,15 @@
+<h3>Add new</h3>
+<form data-bind="submit: addNew">
+    <input type="text" data-bind="value: newItem, valueUpdate: 'afterkeydown'">
+    <button data-bind="enable: newItem().length > 0">Save</button>
+</form>
+<h3>danh sach student</h3>
+
+<ul data-bind="foreach: {data: students, as: 'student'}">
+    <li data-bind="text: student.name"></li>
+    <input  type="text" data-bind="attr: { id: student.name },visible: student.showEdit, value: student.name, valudeUpdate: 'afterkeydown'">
+
+    <button data-bind="click: $parent.removeStudent">Remove</button>
+    <button data-bind="click: $parent.editStudent">Edit</button>
+    <button data-bind="click: $parent.saveStudent, visible: student.showEdit">Save</button>
+</ul>
